@@ -1,8 +1,8 @@
 ﻿namespace SquashMyUrlApp.ServiceClass
 {
-    public interface IShortenedUrlService
+    public interface IShortenUrlService
     {
-        string GetShortenedUrl();
+        string GetShortenedUrl(string url);
         string CalculateShortenedUrl();
     }
 }

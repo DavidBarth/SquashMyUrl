@@ -53,8 +53,9 @@ namespace SquashMyUrlApp.Utilities
             return true;
         }
 
-        public bool ValidateUrl()
+        public bool ValidateUrl(string inputStrting = null)
         {
+            _urlInput = inputStrting;
             return ValidateInputStringLength() && ValidateInputURI();
         }
     }

@@ -9,7 +9,7 @@ namespace SquashMyUrlApp.Utilities
         static long COUNTER = 100000000000;
         string safeUrlElements = "0123456789abcdefghIjklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        public UrlEncoder(string inputString)
+        public UrlEncoder(string inputString = null)
         {
             if(inputString != null)
             {
@@ -17,9 +17,14 @@ namespace SquashMyUrlApp.Utilities
             }
         }
 
-        public string EncodeUrl()
+        public string EncodeUrl(string input)
         {
+            if(input != null)
             return Base10ToBase62(COUNTER);
+            else
+            {
+                return string.Empty;
+            }
         }
 
         private string Base10ToBase62(long counter)
