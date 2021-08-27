@@ -9,8 +9,9 @@
  # Example: https://localhost:44347/api/squashmyurl?input=https://news.bitcoin.com/soldex-ai-is-implementing-multi-module-components-to-hydraswap/
  # For the same URL it will return a unique key for a new URL a new key
  
- # TODO add DB
- # ADD Domain name before the squashed URL and return that.
+ # TODO
+ # Add DB functionality
+ # Add Domain name before the squashed URL and return that.
  
 
  
