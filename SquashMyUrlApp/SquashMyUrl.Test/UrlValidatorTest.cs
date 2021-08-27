@@ -6,18 +6,19 @@ namespace SquashMyUrl.Test
 {
     class UrlValidatorTest
     {
+        UrlValidator _urlValidator;
+
         [SetUp]
         public void Setup()
         {
-
         }
 
         [Test]
         public void TestUrlConverterHasNullInput()
         {
-            UrlValidator uRLConverter = new UrlValidator(null);
+            _urlValidator = new UrlValidator(null);
 
-            bool result = uRLConverter.ValidateInputStringLength();
+            bool result = _urlValidator.ValidateInputStringLength();
 
             Assert.IsFalse(result);
         }
@@ -26,9 +27,9 @@ namespace SquashMyUrl.Test
         public void TestUrlConverterHasStringLengthZero()
         {
             string testString = string.Empty;
-            UrlValidator uRLConverter = new UrlValidator(testString);
+            _urlValidator = new UrlValidator(testString);
 
-            bool result = uRLConverter.ValidateInputStringLength();
+            bool result = _urlValidator.ValidateInputStringLength();
 
             Assert.IsFalse(result);
         }
@@ -37,9 +38,9 @@ namespace SquashMyUrl.Test
         public void TestUrlConverterInputExceededMaxURLLength()
         {
             string testString = UtilityClass.GetTestString(2001);
-            UrlValidator uRLConverter = new UrlValidator(testString);
+            _urlValidator = new UrlValidator(testString);
 
-            bool result = uRLConverter.ValidateInputStringLength();
+            bool result = _urlValidator.ValidateInputStringLength();
 
             Assert.IsFalse(result);
         }
@@ -48,9 +49,9 @@ namespace SquashMyUrl.Test
         public void TestUrlConverterInputLengthIsValid()
         {
             string testString = UtilityClass.GetTestString(100);
-            UrlValidator uRLConverter = new UrlValidator(testString);
+            _urlValidator = new UrlValidator(testString);
 
-            var result = uRLConverter.ValidateInputStringLength();
+            var result = _urlValidator.ValidateInputStringLength();
 
             Assert.IsTrue(result);
         }
@@ -62,27 +63,28 @@ namespace SquashMyUrl.Test
         [TestCase("www.google.com")]
         public void TestThatURIValidatorThrowsException(string testParam)
         {
-            UrlValidator uRLConverter = new UrlValidator(testParam);
+            _urlValidator = new UrlValidator(testParam);
 
-            Assert.Throws<UriFormatException>(() => uRLConverter.ValidateInputURI());
+            Assert.Throws<UriFormatException>(() => _urlValidator.ValidateInputURI());
         }
 
         [Test]
         [TestCase("https://en.wikipedia.org/wiki/URL_shortening")]
         public void TestThatURIValidatonPass(string testParam)
         {
-            UrlValidator uRLConverter = new UrlValidator(testParam);
+            _urlValidator = new UrlValidator(testParam);
 
-            Assert.True(uRLConverter.ValidateInputURI());
+            Assert.True(_urlValidator.ValidateInputURI());
         }
 
         [Test]
-        public void TestInputURIIsValid()
+        [TestCase("https://en.wikipedia.org/wiki/URL_shortening")]
+        public void TestInputURIIsValid(string testParam)
         {
-            UrlValidator uRLConverter = new UrlValidator("https://docs.microsoft.com/en-us/dotnet/api/system.uri.-ctor?view=net-5.0");
-            string result = uRLConverter.ExractPartOfURLToConvert();
+            _urlValidator = new UrlValidator(testParam);
+            bool result = _urlValidator.ValidateUrl();
 
-            Assert.False(result.Length > 0);
+            Assert.True(result);
         }
     }
 }

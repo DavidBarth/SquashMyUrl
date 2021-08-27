@@ -3,7 +3,7 @@
 namespace SquashMyUrlApp.Utilities
 {
     /// <summary>
-    /// class to that contains validation and encoding of URLs
+    /// class that contains validation of URLs
     /// for the SquasMyURL Service
     /// </summary>
     public class UrlValidator
@@ -53,17 +53,9 @@ namespace SquashMyUrlApp.Utilities
             return true;
         }
 
-        public string ExractPartOfURLToConvert()
+        public bool ValidateUrl()
         {
-            string emtpyString = string.Empty;
-
-            //length isn't valid we short cut here
-            bool valid = ValidateInputStringLength() && ValidateInputURI();
-            if (valid)
-            {
-                //insert encoder here
-            }
-            return emtpyString;
+            return ValidateInputStringLength() && ValidateInputURI();
         }
     }
 }
