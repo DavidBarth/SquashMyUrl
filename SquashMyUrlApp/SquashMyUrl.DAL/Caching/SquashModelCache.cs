@@ -1,4 +1,5 @@
 ﻿using SquashMyUrlApp.Models;
+using System;
 using System.Collections.Generic;
 
 namespace SquashMyUrl.DAL.Caching
@@ -13,21 +14,21 @@ namespace SquashMyUrl.DAL.Caching
     internal class SquashModelCache : ISquashModelCache
     {
         Dictionary<string, UrlModel> _cache = new Dictionary<string, UrlModel>();
-        public SquashModelCache()
-        {
-            var model = new UrlModel() { ShortenedUrl = "O9Oz9L1" };
-            _cache.Add("https://www.kerstner.at/2012/07/shortening-strings-using-base-62-encoding/", model);
-        }
 
-        public void AddShortenedUrl(string encodedUrl)
+        public void AddShortenedUrl(string originalUrl, string encodedUrl)
         {
-            throw new System.NotImplementedException();
+            UrlModel urlModel = new UrlModel
+            {
+                ShortenedUrl = encodedUrl,
+                CreatedDate = DateTime.UtcNow
+            };
+            _cache.Add(originalUrl, urlModel);
         }
 
         public string GetShortenedUrl(string originalUrl)
         {
             UrlModel model;
-            _cache.TryGetValue("https://www.kerstner.at/2012/07/shortening-strings-using-base-62-encoding/", out model);
+            _cache.TryGetValue(originalUrl, out model);
             if (!string.IsNullOrWhiteSpace(model.ShortenedUrl))
             {
                 return model.ShortenedUrl;

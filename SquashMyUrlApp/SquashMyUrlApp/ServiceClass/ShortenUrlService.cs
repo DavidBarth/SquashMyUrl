@@ -27,35 +27,26 @@ namespace SquashMyUrlApp.ServiceClass
 
         public string GetShortenedUrl(string input)
         {
-            string encodedUrl = string.Empty;
-
-            //validate url
+             //validate url
             if (_urlValidator.ValidateUrl(input))
             {
-                //convert url
-                encodedUrl = _urlEncoder.EncodeUrl(input);
+                //if valid check check cache first if it's in there return the stored value
+                string cachedUrl = _squashModelRepository.GetShortenedUrl(input);
+
+                if (string.IsNullOrWhiteSpace(cachedUrl))
+                {
+                    string shortenedUrl = _urlEncoder.EncodeUrl(input);
+                    _squashModelRepository.AddShortenedUrl(input, shortenedUrl);
+                    return shortenedUrl;
+                }
+                else
+                {
+                    return cachedUrl;
+                }
             }
             else
             {
                 return string.Empty;
-            }
-
-            bool exists = false;
-            //check if exist in Cache
-            string cachedUrl = _squashModelRepository.GetShortenedUrl(encodedUrl);
-
-            if (!string.IsNullOrWhiteSpace(cachedUrl))
-            {
-                //if exist then it's in DB return
-
-                return cachedUrl;
-            }
-            //might not need this as repository will do check and commit
-            else
-            {
-                //else store in Cache and DB
-                //return url
-                return encodedUrl;
             }
         }
     }

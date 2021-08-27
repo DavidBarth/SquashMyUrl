@@ -5,7 +5,7 @@ namespace SquashMyUrl.DAL
 {
     /// <summary>
     /// repository that checks for instance in cache
-    /// if not in cache then store in DB and cache
+    /// if not in cache then store in DB and cache if DB successfully stored input
     /// if in cache return straight away
     /// </summary>
     public class SquashModelRepository : ISquashModelRepository
@@ -25,18 +25,20 @@ namespace SquashMyUrl.DAL
                 _cache = cache;
             }
         }
-        public string GetShortenedUrl(string encodedUrl)
+
+        public void AddShortenedUrl(string original, string encodedUrl)
         {
-            string cachedUrl = _cache.GetShortenedUrl(encodedUrl);
-            if (!string.IsNullOrWhiteSpace(cachedUrl))
+            //hard coding succesful commit to DB for now
+            bool dbTransactionSuccessful = true;
+            if (dbTransactionSuccessful)
             {
-                return cachedUrl;
+                _cache.AddShortenedUrl(original, encodedUrl);
             }
-            else
-            {
-                _cache.AddShortenedUrl(encodedUrl);
-            }
-            return cachedUrl;
+        }
+
+        public string GetShortenedUrl(string input)
+        {
+            return _cache.GetShortenedUrl(input);
         }
     }
 }

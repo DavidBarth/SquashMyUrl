@@ -3,6 +3,9 @@ using SquashMyUrlApp.Models;
 
 namespace SquashMyUrl.DAL
 {
+    /// <summary>
+    /// DB context for R/W operations
+    /// </summary>
     public class SquashMyUrlContext : DbContext
     {
         public SquashMyUrlContext(DbContextOptions<SquashMyUrlContext> options) : base(options)

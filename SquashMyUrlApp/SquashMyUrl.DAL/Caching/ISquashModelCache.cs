@@ -4,6 +4,6 @@
     public interface ISquashModelCache
     {
         string GetShortenedUrl(string originalUrl);
-        void AddShortenedUrl(string encodedUrl);
+        void AddShortenedUrl(string originalUrl, string encodedUrl);
     }
 }
