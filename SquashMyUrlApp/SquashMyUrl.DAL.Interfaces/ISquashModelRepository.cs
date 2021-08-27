@@ -2,6 +2,6 @@
 {
     public interface ISquashModelRepository
     {
-        string CheckShortenedUrlExist(string encodedUrl);
+        string GetShortenedUrl(string encodedUrl);
     }
 }

@@ -25,9 +25,18 @@ namespace SquashMyUrl.DAL
                 _cache = cache;
             }
         }
-        public string CheckShortenedUrlExist(string encodedUrl)
+        public string GetShortenedUrl(string encodedUrl)
         {
-            return _cache.CheckShortenedUrlExist(encodedUrl);
+            string cachedUrl = _cache.GetShortenedUrl(encodedUrl);
+            if (!string.IsNullOrWhiteSpace(cachedUrl))
+            {
+                return cachedUrl;
+            }
+            else
+            {
+                _cache.AddShortenedUrl(encodedUrl);
+            }
+            return cachedUrl;
         }
     }
 }

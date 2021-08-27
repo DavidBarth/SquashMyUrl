@@ -19,7 +19,12 @@ namespace SquashMyUrl.DAL.Caching
             cache.Add(model);
         }
 
-        public string CheckShortenedUrlExist(string encodedUrl)
+        public void AddShortenedUrl(string encodedUrl)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetShortenedUrl(string encodedUrl)
         {
             return cache.Find(x=> x.ShortenedUrl == encodedUrl)?.ShortenedUrl;
         }
