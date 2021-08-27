@@ -1,0 +1,20 @@
+﻿Public API - MOBILE, WEB 
+GetShortenedURL Controller method
+
+Service 
+GetShortenedURL(string input) -> RepositoryPattern 
+CalculateShortURL
+
+					
+DAL Repository 
+FindURL
+	if no URL calculate tinyURL -> Save then return
+	if URL found return tinyURL
+
+Model
+
+Schema
+id incremental int
+shortened link nvarchar(20)
+weblink - link to forward to (should be able to hold 2000 at least)
+timestamp datetime
