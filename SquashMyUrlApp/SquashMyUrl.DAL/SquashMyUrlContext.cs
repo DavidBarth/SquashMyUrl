@@ -9,11 +9,11 @@ namespace SquashMyUrl.DAL
         {
         }
 
-        public DbSet<SquashModel> SquashModels { get; set; }
+        public DbSet<UrlModel> UrlModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SquashModel>().ToTable("Url");
+            modelBuilder.Entity<UrlModel>().ToTable("Url");
         }
     }
 }

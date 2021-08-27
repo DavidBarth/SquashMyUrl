@@ -4,26 +4,26 @@ using System.Collections.Generic;
 
 namespace SquashMyUrl.DAL
 {
-    public class SquashModelRepository : IRepository<SquashModel>
+    public class SquashModelRepository : IRepository<UrlModel>
     {
-        public IEnumerable<SquashModel> List => throw new System.NotImplementedException();
+        public IEnumerable<UrlModel> List => throw new System.NotImplementedException();
 
-        public void Add(SquashModel entity)
+        public void Add(UrlModel entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(SquashModel entity)
+        public void Delete(UrlModel entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public SquashModel FindById(int Id)
+        public UrlModel FindById(int Id)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(SquashModel entity)
+        public void Update(UrlModel entity)
         {
             throw new System.NotImplementedException();
         }
