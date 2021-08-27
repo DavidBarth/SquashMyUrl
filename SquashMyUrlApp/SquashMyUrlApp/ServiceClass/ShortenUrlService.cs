@@ -42,14 +42,15 @@ namespace SquashMyUrlApp.ServiceClass
 
             bool exists = false;
             //check if exist in Cache
-            string cachedUrl = _squashModelRepository.CheckShortenedUrlExist(encodedUrl);
+            string cachedUrl = _squashModelRepository.GetShortenedUrl(encodedUrl);
 
-            if (cachedUrl != null && cachedUrl.Length > 0)
+            if (!string.IsNullOrWhiteSpace(cachedUrl))
             {
                 //if exist then it's in DB return
 
                 return cachedUrl;
             }
+            //might not need this as repository will do check and commit
             else
             {
                 //else store in Cache and DB

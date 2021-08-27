@@ -17,7 +17,7 @@ namespace SquashMyUrlApp.Utilities
             }
         }
 
-        public string EncodeUrl(string input)
+        public string EncodeUrl(string input = null)
         {
             if(input != null)
             return Base10ToBase62(COUNTER);

@@ -17,9 +17,9 @@ namespace SquashMyUrl.Test
         [TestCase("https://coinmarketcap.com/currencies/terra-luna/")]
         public void TestUrlEncoderReturnsShortenedUrl(string inputParam)
         {
-            _urlEncoder = new UrlEncoder(inputParam);
+            _urlEncoder = new UrlEncoder();
 
-            string encodedUrl = _urlEncoder.EncodeUrl();
+            string encodedUrl = _urlEncoder.EncodeUrl(inputParam);
 
             Assert.True(encodedUrl.Length > 0);
         }
