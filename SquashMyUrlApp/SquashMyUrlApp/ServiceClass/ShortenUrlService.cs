@@ -20,11 +20,7 @@ namespace SquashMyUrlApp.ServiceClass
             _urlValidator = new UrlValidator();
             _squashModelRepository = new SquashModelRepository();
         }
-        public string CalculateShortenedUrl()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public string GetShortenedUrl(string input)
         {
              //validate url
