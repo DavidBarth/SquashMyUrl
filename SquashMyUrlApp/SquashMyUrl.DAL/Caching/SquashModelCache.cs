@@ -10,13 +10,13 @@ namespace SquashMyUrl.DAL.Caching
     /// 1. how many URLs do we want to store here at a time?
     /// 2. bootstrapping cache on service restart
     /// </summary>
-    class SquashModelCache : ISquashModelCache
+    internal class SquashModelCache : ISquashModelCache
     {
-        List<UrlModel> cache = new List<UrlModel>();
+        Dictionary<string, UrlModel> _cache = new Dictionary<string, UrlModel>();
         public SquashModelCache()
         {
             var model = new UrlModel() { ShortenedUrl = "O9Oz9L1" };
-            cache.Add(model);
+            _cache.Add("https://www.kerstner.at/2012/07/shortening-strings-using-base-62-encoding/", model);
         }
 
         public void AddShortenedUrl(string encodedUrl)
@@ -24,9 +24,18 @@ namespace SquashMyUrl.DAL.Caching
             throw new System.NotImplementedException();
         }
 
-        public string GetShortenedUrl(string encodedUrl)
+        public string GetShortenedUrl(string originalUrl)
         {
-            return cache.Find(x=> x.ShortenedUrl == encodedUrl)?.ShortenedUrl;
+            UrlModel model;
+            _cache.TryGetValue("https://www.kerstner.at/2012/07/shortening-strings-using-base-62-encoding/", out model);
+            if (!string.IsNullOrWhiteSpace(model.ShortenedUrl))
+            {
+                return model.ShortenedUrl;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }
