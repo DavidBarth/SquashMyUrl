@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace SquashMyUrl.DAL.NewFolder
+namespace SquashMyUrl.DAL.DB
 {
     /// <summary>
     /// This is just to simulate a DB insert but 
-    /// will use the EF and DbContext in SquashMyUrlContext.cs
+    /// will use the EF folder content to implement DB operations
     /// </summary>
     internal class SquashDB : ISquashDB
     {
@@ -20,6 +20,8 @@ namespace SquashMyUrl.DAL.NewFolder
                 CreatedDate = DateTime.UtcNow
             };
             _fakedb.Add(originalUrl, urlModel);
+
+            //assuming DB insert was successful
             return true;
         }
 

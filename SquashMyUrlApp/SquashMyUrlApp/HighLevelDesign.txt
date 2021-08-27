@@ -3,7 +3,6 @@ GetShortenedURL Controller method
 
 Service 
 GetShortenedURL(string input) -> RepositoryPattern 
-CalculateShortURL
 
 					
 DAL Repository 
@@ -13,7 +12,7 @@ FindURL
 
 Model
 
-Schema
+Schema for DB
 id incremental int
 shortened link nvarchar(20)
 weblink - link to forward to (should be able to hold 2000 at least)

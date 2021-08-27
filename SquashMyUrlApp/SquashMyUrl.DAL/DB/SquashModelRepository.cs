@@ -5,9 +5,9 @@ using SquashMyUrl.DAL.DB;
 namespace SquashMyUrl.DAL
 {
     /// <summary>
-    /// repository that checks for instance in cache
+    /// repository class that checks for instance in cache
     /// if not in cache then store in DB and cache if DB successfully stored input
-    /// if in cache return straight away
+    /// if in cache return found item straight away
     /// </summary>
     public class SquashModelRepository : ISquashModelRepository
     {
@@ -21,6 +21,7 @@ namespace SquashMyUrl.DAL
             if (cache == null)
             {
                 _cache = new SquashModelCache();
+                _fakeDB = new SquashDB();
             }
             else
             {
@@ -30,7 +31,6 @@ namespace SquashMyUrl.DAL
 
         public void AddShortenedUrl(string original, string encodedUrl)
         {
-            //hard coding succesful commit to DB for now
             bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(original, encodedUrl);
             if (dbTransactionSuccessful)
             {
