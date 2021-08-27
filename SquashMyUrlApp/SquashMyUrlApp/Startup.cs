@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SquashMyUrl.DAL;
+using System.Web.Http;
 
 namespace SquashMyUrlApp
 {
@@ -49,7 +50,9 @@ namespace SquashMyUrlApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}",
+                    defaults: new { urlInput = RouteParameter.Optional }
+                    );
             });
         }
     }
