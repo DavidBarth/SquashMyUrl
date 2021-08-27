@@ -1,31 +1,33 @@
-﻿using SquashMyUrl.Interfaces;
-using SquashMyUrlApp.Models;
-using System.Collections.Generic;
+﻿using SquashMyUrl.DAL.Caching;
+using SquashMyUrl.DAL.Interfaces;
 
 namespace SquashMyUrl.DAL
 {
-    public class SquashModelRepository : IRepository<UrlModel>
+    /// <summary>
+    /// repository that checks for instance in cache
+    /// if not in cache then store in DB and cache
+    /// if in cache return straight away
+    /// </summary>
+    public class SquashModelRepository : ISquashModelRepository
     {
-        public IEnumerable<UrlModel> List => throw new System.NotImplementedException();
+        private readonly ISquashModelCache _cache;
 
-        public void Add(UrlModel entity)
+        //just newing a cache up here for now
+        //would use IOC container later to resolve
+        public SquashModelRepository(ISquashModelCache cache = null)
         {
-            throw new System.NotImplementedException();
+            if (cache == null)
+            {
+                _cache = new SquashModelCache();
+            }
+            else
+            {
+                _cache = cache;
+            }
         }
-
-        public void Delete(UrlModel entity)
+        public string CheckShortenedUrlExist(string encodedUrl)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public UrlModel FindById(int Id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update(UrlModel entity)
-        {
-            throw new System.NotImplementedException();
+            return _cache.CheckShortenedUrlExist(encodedUrl);
         }
     }
 }

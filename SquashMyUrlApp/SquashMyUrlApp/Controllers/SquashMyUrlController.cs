@@ -13,16 +13,14 @@ namespace SquashMyUrlApp.Controllers
         {
             urlShortenerService = new ShortenUrlService();
         }
-        // https://localhost:44347/api/squashmyurl/GetShortenedUrl
+        //usage https://<yourownlocalostandport/api/squashmyurl?input=<INSERT_INPUT_HERE>
+        //test url https://www.kerstner.at/2012/07/shortening-strings-using-base-62-encoding/
+        //after encoding O9Oz9L1 
         // GET: api/<SquashMyUrlController>
         [HttpGet]
         public string GetShortenedUrl(string input)
         {
-            string shortUrl = string.Empty;
-            
-            shortUrl = urlShortenerService.GetShortenedUrl(input);
-
-            return shortUrl;
+            return urlShortenerService.GetShortenedUrl(input);
         }
     }
 }

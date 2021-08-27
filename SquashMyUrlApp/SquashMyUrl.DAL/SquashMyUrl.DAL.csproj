@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SquashMyUrl.DAL.Interfaces\SquashMyUrl.DAL.Interfaces.csproj" />
     <ProjectReference Include="..\SquashMyUrl.Model\SquashMyUrl.Model.csproj" />
   </ItemGroup>
 

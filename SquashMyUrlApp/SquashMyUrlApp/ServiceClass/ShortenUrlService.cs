@@ -1,4 +1,5 @@
 ﻿using SquashMyUrl.DAL;
+using SquashMyUrl.DAL.Interfaces;
 using SquashMyUrlApp.Utilities;
 
 namespace SquashMyUrlApp.ServiceClass
@@ -10,8 +11,9 @@ namespace SquashMyUrlApp.ServiceClass
     {
         private readonly UrlEncoder _urlEncoder;
         private readonly UrlValidator _urlValidator;
-        private readonly SquashModelRepository _squashModelRepository;
+        private readonly ISquashModelRepository _squashModelRepository;
 
+        //ShortenURlService should resovle it dependencies at run-time using IOC container like Auto-Frac
         public ShortenUrlService()
         {
             _urlEncoder = new UrlEncoder();
@@ -39,18 +41,18 @@ namespace SquashMyUrlApp.ServiceClass
             }
 
             bool exists = false;
-            //check if exist in DB
+            //check if exist in Cache
+            string cachedUrl = _squashModelRepository.CheckShortenedUrlExist(encodedUrl);
 
-
-            if (exists)
+            if (cachedUrl != null && cachedUrl.Length > 0)
             {
-                //if exist return
+                //if exist then it's in DB return
 
-                return encodedUrl;
+                return cachedUrl;
             }
             else
             {
-                //else store in DB
+                //else store in Cache and DB
                 //return url
                 return encodedUrl;
             }

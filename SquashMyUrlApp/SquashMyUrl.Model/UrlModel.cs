@@ -1,12 +1,11 @@
-﻿using SquashMyUrl.Interfaces;
-using System;
+﻿using System;
 
 namespace SquashMyUrlApp.Models
 {
     /// <summary>
     /// model class used to map to DB
     /// </summary>
-    public class UrlModel : IEntity
+    public class UrlModel
     {
         public string ShortenedUrl { get; set; }
         public string OriginalUrl { get; set; }
