@@ -5,17 +5,8 @@ namespace SquashMyUrlApp.Utilities
 {
     public class UrlEncoder
     {
-        private readonly string _inputString;
         static long COUNTER = 100000000000;
         string safeUrlElements = "0123456789abcdefghIjklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        public UrlEncoder(string inputString = null)
-        {
-            if(inputString != null)
-            {
-                _inputString = inputString;
-            }
-        }
 
         public string EncodeUrl(string input = null)
         {

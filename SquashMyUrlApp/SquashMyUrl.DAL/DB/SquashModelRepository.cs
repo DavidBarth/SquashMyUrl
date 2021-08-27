@@ -1,5 +1,6 @@
 ﻿using SquashMyUrl.DAL.Caching;
 using SquashMyUrl.DAL.Interfaces;
+using SquashMyUrl.DAL.DB;
 
 namespace SquashMyUrl.DAL
 {
@@ -11,6 +12,7 @@ namespace SquashMyUrl.DAL
     public class SquashModelRepository : ISquashModelRepository
     {
         private readonly ISquashModelCache _cache;
+        private readonly ISquashDB _fakeDB;
 
         //just newing a cache up here for now
         //would use IOC container later to resolve
@@ -29,7 +31,7 @@ namespace SquashMyUrl.DAL
         public void AddShortenedUrl(string original, string encodedUrl)
         {
             //hard coding succesful commit to DB for now
-            bool dbTransactionSuccessful = true;
+            bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(original, encodedUrl);
             if (dbTransactionSuccessful)
             {
                 _cache.AddShortenedUrl(original, encodedUrl);
