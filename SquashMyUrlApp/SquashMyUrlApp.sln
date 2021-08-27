@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquashMyUrl.DAL", "SquashMy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquashMyUrl.Interfaces", "SquashMyUrl.Interfaces\SquashMyUrl.Interfaces.csproj", "{1AC09CD7-667B-4E80-940E-E1707B342BEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquashMyUrl.Model", "SquashMyUrl.Model\SquashMyUrl.Model.csproj", "{1341BD8C-F991-4782-B64B-A0994672670D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1AC09CD7-667B-4E80-940E-E1707B342BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AC09CD7-667B-4E80-940E-E1707B342BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AC09CD7-667B-4E80-940E-E1707B342BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1341BD8C-F991-4782-B64B-A0994672670D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1341BD8C-F991-4782-B64B-A0994672670D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1341BD8C-F991-4782-B64B-A0994672670D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1341BD8C-F991-4782-B64B-A0994672670D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

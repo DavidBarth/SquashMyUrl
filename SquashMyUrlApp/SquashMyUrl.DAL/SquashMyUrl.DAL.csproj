@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SquashMyUrl.Interfaces\SquashMyUrl.Interfaces.csproj" />
-    <ProjectReference Include="..\SquashMyUrlApp\SquashMyUrlApp.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SquashMyUrl.Model\SquashMyUrl.Model.csproj" />
   </ItemGroup>
 
 </Project>

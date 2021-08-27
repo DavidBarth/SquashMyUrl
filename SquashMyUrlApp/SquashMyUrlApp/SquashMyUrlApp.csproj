@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SquashMyUrl.Interfaces\SquashMyUrl.Interfaces.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SquashMyUrl.DAL\SquashMyUrl.DAL.csproj" />
   </ItemGroup>
 
 </Project>
