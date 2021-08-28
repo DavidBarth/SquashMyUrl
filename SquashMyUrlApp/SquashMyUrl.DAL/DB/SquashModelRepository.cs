@@ -28,7 +28,7 @@ namespace SquashMyUrl.DAL
                 _cache = cache;
             }
         }
-
+        
         public void AddShortenedUrl(string original, string encodedUrl)
         {
             bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(original, encodedUrl);

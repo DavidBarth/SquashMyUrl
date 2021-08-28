@@ -1,5 +1,5 @@
-﻿using SquashMyUrlApp.Models;
-using System;
+﻿using SquashMyUrl.DAL.Utility;
+using SquashMyUrlApp.Models;
 using System.Collections.Generic;
 
 namespace SquashMyUrl.DAL.DB
@@ -14,11 +14,7 @@ namespace SquashMyUrl.DAL.DB
 
         public bool TryAddShortenedUrl(string originalUrl, string encodedUrl)
         {
-            UrlModel urlModel = new UrlModel
-            {
-                ShortenedUrl = encodedUrl,
-                CreatedDate = DateTime.UtcNow
-            };
+            UrlModel urlModel = ModelBuilder.BuildModel(originalUrl, encodedUrl);
             _fakedb.Add(originalUrl, urlModel);
 
             //assuming DB insert was successful

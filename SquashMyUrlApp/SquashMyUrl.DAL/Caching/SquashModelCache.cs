@@ -1,4 +1,5 @@
-﻿using SquashMyUrlApp.Models;
+﻿using SquashMyUrl.DAL.Utility;
+using SquashMyUrlApp.Models;
 using System;
 using System.Collections.Generic;
 
@@ -17,11 +18,7 @@ namespace SquashMyUrl.DAL.Caching
 
         public void AddShortenedUrl(string originalUrl, string encodedUrl)
         {
-            UrlModel urlModel = new UrlModel
-            {
-                ShortenedUrl = encodedUrl,
-                CreatedDate = DateTime.UtcNow
-            };
+            UrlModel urlModel = ModelBuilder.BuildModel(originalUrl, encodedUrl);
             _cache.Add(originalUrl, urlModel);
         }
 

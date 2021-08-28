@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SquashMyUrl.DAL\SquashMyUrl.DAL.csproj" />
     <ProjectReference Include="..\SquashMyUrlApp\SquashMyUrlApp.csproj" />
   </ItemGroup>
 
