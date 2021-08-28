@@ -1,5 +1,3 @@
-using System;
-
 namespace SquashMyUrlApp.Models
 {
     public class ErrorViewModel

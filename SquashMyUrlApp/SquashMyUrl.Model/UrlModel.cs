@@ -4,6 +4,7 @@ namespace SquashMyUrlApp.Models
 {
     /// <summary>
     /// model class used to map to DB
+    /// will represent a record in table
     /// </summary>
     public class UrlModel
     {

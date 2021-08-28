@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using SquashMyUrlApp.Models;
 using SquashMyUrl.DAL.Utility;
+using SquashMyUrlApp.Models;
 using SquashMyUrlApp.Utilities;
 
 namespace SquashMyUrl.Test

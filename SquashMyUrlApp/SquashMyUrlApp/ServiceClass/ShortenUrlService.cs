@@ -20,7 +20,13 @@ namespace SquashMyUrlApp.ServiceClass
             _urlValidator = new UrlValidator();
             _squashModelRepository = new SquashModelRepository();
         }
-        
+         
+        /// <summary>
+        /// returns shortened url from cache
+        /// if it doesn't exist will persist
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public string GetShortenedUrl(string input)
         {
              //validate url

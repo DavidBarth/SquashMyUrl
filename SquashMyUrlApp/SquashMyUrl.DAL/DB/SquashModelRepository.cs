@@ -1,6 +1,6 @@
 ﻿using SquashMyUrl.DAL.Caching;
-using SquashMyUrl.DAL.Interfaces;
 using SquashMyUrl.DAL.DB;
+using SquashMyUrl.DAL.Interfaces;
 
 namespace SquashMyUrl.DAL
 {

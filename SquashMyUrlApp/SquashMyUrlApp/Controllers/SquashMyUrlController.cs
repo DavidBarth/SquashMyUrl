@@ -4,6 +4,9 @@ using SquashMyUrlApp.ServiceClass;
 
 namespace SquashMyUrlApp.Controllers
 {
+    /// <summary>
+    /// public api, entry to service
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class SquashMyUrlController : ControllerBase

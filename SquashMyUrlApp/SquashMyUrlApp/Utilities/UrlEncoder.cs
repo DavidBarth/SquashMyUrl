@@ -3,11 +3,19 @@ using System.Text;
 
 namespace SquashMyUrlApp.Utilities
 {
+    /// <summary>
+    /// encoding algorithm that uses convert from base 10 to base 62
+    /// </summary>
     public class UrlEncoder
     {
         static long COUNTER = 100000000000;
         string safeUrlElements = "0123456789abcdefghIjklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+        /// <summary>
+        /// returns short code for
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public string EncodeUrl(string input = null)
         {
             if(input != null)
@@ -34,6 +42,15 @@ namespace SquashMyUrlApp.Utilities
             }
 
             return stringBuilder.ToString();
+        }
+
+        private void BuildShortUrl(string encodedUrl)
+        {
+            //this method will be used to build the short url
+            //from Uri scheme scheme + :// + Uri dnssafehost + /encodedUrl
+            //result something like this http://wwww.example.com/ + encodedUrl
+
+            //will be called from EncodeUrl
         }
     }
 }
