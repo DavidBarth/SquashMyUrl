@@ -29,12 +29,12 @@ namespace SquashMyUrl.DAL
             }
         }
         
-        public void AddShortenedUrl(string original, string encodedUrl)
+        public void AddShortenedUrl(string original, string shortUrlCode)
         {
-            bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(original, encodedUrl);
+            bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(original, shortUrlCode);
             if (dbTransactionSuccessful)
             {
-                _cache.AddShortenedUrl(original, encodedUrl);
+                _cache.AddShortenedUrl(original, shortUrlCode);
             }
         }
 

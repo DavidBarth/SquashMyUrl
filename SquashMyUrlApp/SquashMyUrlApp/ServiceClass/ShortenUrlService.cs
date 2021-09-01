@@ -37,9 +37,9 @@ namespace SquashMyUrlApp.ServiceClass
 
                 if (string.IsNullOrWhiteSpace(cachedUrl))
                 {
-                    string shortenedUrl = _urlEncoder.EncodeUrl(input);
-                    _squashModelRepository.AddShortenedUrl(input, shortenedUrl);
-                    return shortenedUrl;
+                    string shortUrlCode = _urlEncoder.EncodeUrl(input);
+                    _squashModelRepository.AddShortenedUrl(input, shortUrlCode);
+                    return shortUrlCode;
                 }
                 else
                 {

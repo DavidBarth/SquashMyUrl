@@ -2,7 +2,7 @@
 {
     public interface ISquashModelRepository
     {
-        string GetShortenedUrl(string encodedUrl);
-        void AddShortenedUrl(string original, string encodedUrl);
+        string GetShortenedUrl(string shortUrlCode);
+        void AddShortenedUrl(string original, string shortUrlCode);
     }
 }
