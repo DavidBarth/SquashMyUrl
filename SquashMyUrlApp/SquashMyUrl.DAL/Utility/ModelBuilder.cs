@@ -12,7 +12,7 @@ namespace SquashMyUrl.DAL.Utility
         {
             UrlModel urlModel = new UrlModel
             {
-                ShortenedUrl = encodedUrl,
+                ID = encodedUrl,
                 OriginalUrl = originalUrl,
                 CreatedDate = DateTime.UtcNow
             };

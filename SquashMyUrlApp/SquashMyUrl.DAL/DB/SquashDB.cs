@@ -10,7 +10,7 @@ namespace SquashMyUrl.DAL.DB
     /// </summary>
     internal class SquashDB : ISquashDB
     {
-        private static readonly Dictionary<string, UrlModel> _fakedb = new Dictionary<string, UrlModel>();
+        private static readonly List<UrlModel> _fakedb = new List<UrlModel>();
 
         /// <summary>
         /// commits url to DB
@@ -18,10 +18,9 @@ namespace SquashMyUrl.DAL.DB
         /// <param name="originalUrl"></param>
         /// <param name="encodedUrl"></param>
         /// <returns></returns>
-        public bool TryAddShortenedUrl(string originalUrl, string encodedUrl)
+        public bool TryAddShortenedUrl(UrlModel urlModel)
         {
-            UrlModel urlModel = ModelBuilder.BuildModel(originalUrl, encodedUrl);
-            _fakedb.Add(originalUrl, urlModel);
+            _fakedb.Add(urlModel);
 
             //assuming DB insert was successful
             return true;
@@ -34,17 +33,15 @@ namespace SquashMyUrl.DAL.DB
         /// <returns></returns>
         public string GetShortenedUrl(string originalUrl)
         {
-            UrlModel model;
-            _fakedb.TryGetValue(originalUrl, out  model);
-            if (!string.IsNullOrWhiteSpace(model?.ShortenedUrl))
+            UrlModel model = _fakedb.Find(m => m.OriginalUrl == originalUrl);
+            if (!string.IsNullOrWhiteSpace(model?.ID))
             {
-                return model.ShortenedUrl;
+                return model.ID;
             }
             else
             {
                 return string.Empty;
             }
         }
-
     }
 }

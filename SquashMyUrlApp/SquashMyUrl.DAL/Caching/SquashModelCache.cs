@@ -13,17 +13,16 @@ namespace SquashMyUrl.DAL.Caching
     /// </summary>
     internal class SquashModelCache : ISquashModelCache
     {
-        private static readonly Dictionary<string, UrlModel> _cache = new Dictionary<string, UrlModel>();
+        private static readonly List<UrlModel> _cache = new List<UrlModel>();
 
         /// <summary>
         /// add shorted url to cache
         /// </summary>
         /// <param name="originalUrl"></param>
-        /// <param name="encodedUrl"></param>
-        public void AddShortenedUrl(string originalUrl, string encodedUrl)
+        /// <param name="shortUrlCode"></param>
+        public void AddShortenedUrl(UrlModel urlModel)
         {
-            UrlModel urlModel = ModelBuilder.BuildModel(originalUrl, encodedUrl);
-            _cache.Add(originalUrl, urlModel);
+            _cache.Add(urlModel);
         }
 
         /// <summary>
@@ -33,11 +32,10 @@ namespace SquashMyUrl.DAL.Caching
         /// <returns></returns>
         public string GetShortenedUrl(string originalUrl)
         {
-            UrlModel model;
-            _cache.TryGetValue(originalUrl, out model);
-            if (!string.IsNullOrWhiteSpace(model?.ShortenedUrl))
+            UrlModel model = _cache.Find(m => m.OriginalUrl == originalUrl);
+            if (!string.IsNullOrWhiteSpace(model?.ID))
             {
-                return model.ShortenedUrl;
+                return model.ID;
             }
             else
             {

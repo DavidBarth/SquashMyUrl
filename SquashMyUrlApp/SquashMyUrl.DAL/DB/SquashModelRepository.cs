@@ -1,6 +1,7 @@
 ﻿using SquashMyUrl.DAL.Caching;
 using SquashMyUrl.DAL.DB;
 using SquashMyUrl.DAL.Interfaces;
+using SquashMyUrl.DAL.Utility;
 
 namespace SquashMyUrl.DAL
 {
@@ -31,10 +32,11 @@ namespace SquashMyUrl.DAL
         
         public void AddShortenedUrl(string original, string shortUrlCode)
         {
-            bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(original, shortUrlCode);
+            SquashMyUrlApp.Models.UrlModel model = ModelBuilder.BuildModel(original, shortUrlCode);
+            bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(model);
             if (dbTransactionSuccessful)
             {
-                _cache.AddShortenedUrl(original, shortUrlCode);
+                _cache.AddShortenedUrl(model);
             }
         }
 

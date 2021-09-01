@@ -8,7 +8,7 @@ namespace SquashMyUrlApp.Models
     /// </summary>
     public class UrlModel
     {
-        public string ShortenedUrl { get; set; }
+        public string ID { get; set; }
         public string OriginalUrl { get; set; }
         public DateTime CreatedDate { get; set; }
     }

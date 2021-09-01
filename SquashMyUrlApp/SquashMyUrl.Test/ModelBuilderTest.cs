@@ -22,7 +22,7 @@ namespace SquashMyUrl.Test
             string encodedUrl = _urlEncoder.EncodeUrl(originalUrl);
             UrlModel urlModel = ModelBuilder.BuildModel(originalUrl, encodedUrl);
 
-            Assert.True(urlModel.ShortenedUrl.Equals(encodedUrl));
+            Assert.True(urlModel.ID.Equals(encodedUrl));
             Assert.True(urlModel.OriginalUrl.Equals(originalUrl));
         }
     }
