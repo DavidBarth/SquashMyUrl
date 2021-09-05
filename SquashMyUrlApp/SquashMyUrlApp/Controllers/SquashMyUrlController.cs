@@ -16,12 +16,20 @@ namespace SquashMyUrlApp.Controllers
         {
             urlShortenerService = new ShortenUrlService();
         }
-        
-        // GET: api/<SquashMyUrlController>
+
         [HttpGet]
-        public string GetShortenedUrl(string input)
+        public ActionResult GetShortenedUrl(string input)
         {
-            return urlShortenerService.GetShortenedUrl(input);
+            string cachedUrl = urlShortenerService.TryGetCachedUrl(input);
+            if (string.IsNullOrEmpty(cachedUrl))
+            {
+                string shortUrl = urlShortenerService.AddShortenedUrl(input);
+                return Ok($"https://localhost:44347/api/squashmyurl?input={shortUrl}");
+            }
+            else
+            {
+                return Redirect(cachedUrl);
+            }
         }
     }
 }
