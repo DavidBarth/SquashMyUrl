@@ -1,5 +1,4 @@
-﻿using SquashMyUrl.DAL.Utility;
-using SquashMyUrlApp.Models;
+﻿using SquashMyUrlApp.Models;
 using System.Collections.Generic;
 
 namespace SquashMyUrl.DAL.DB
@@ -31,9 +30,9 @@ namespace SquashMyUrl.DAL.DB
         /// </summary>
         /// <param name="originalUrl"></param>
         /// <returns></returns>
-        public string GetShortenedUrl(string originalUrl)
+        public string GetShortenedUrl(string urlCode)
         {
-            UrlModel model = _fakedb.Find(m => m.OriginalUrl == originalUrl);
+            UrlModel model = _fakedb.Find(m => m.ID == urlCode);
             if (!string.IsNullOrWhiteSpace(model?.ID))
             {
                 return model.ID;

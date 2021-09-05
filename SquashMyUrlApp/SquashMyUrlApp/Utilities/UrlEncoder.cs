@@ -43,14 +43,5 @@ namespace SquashMyUrlApp.Utilities
 
             return stringBuilder.ToString();
         }
-
-        private void BuildShortUrl(string encodedUrl)
-        {
-            //this method will be used to build the short url
-            //from Uri scheme scheme + :// + Uri dnssafehost + /encodedUrl
-            //result something like this http://wwww.example.com/ + encodedUrl
-
-            //will be called from EncodeUrl
-        }
     }
 }

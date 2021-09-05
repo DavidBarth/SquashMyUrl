@@ -1,8 +1,10 @@
-﻿namespace SquashMyUrl.DAL.Interfaces
+﻿using SquashMyUrlApp.Models;
+
+namespace SquashMyUrl.DAL.Interfaces
 {
     public interface ISquashModelRepository
     {
-        string GetShortenedUrl(string shortUrlCode);
+        UrlModel GetUrl(string shortUrlCode);
         void AddShortenedUrl(string original, string shortUrlCode);
     }
 }

@@ -15,31 +15,21 @@ namespace SquashMyUrl.DAL.Caching
     {
         private static readonly List<UrlModel> _cache = new List<UrlModel>();
 
-        /// <summary>
-        /// add shorted url to cache
-        /// </summary>
-        /// <param name="originalUrl"></param>
-        /// <param name="shortUrlCode"></param>
-        public void AddShortenedUrl(UrlModel urlModel)
+        public void Add(UrlModel urlModel)
         {
             _cache.Add(urlModel);
         }
 
-        /// <summary>
-        /// return shorted url from cache
-        /// </summary>
-        /// <param name="originalUrl"></param>
-        /// <returns></returns>
-        public string GetShortenedUrl(string originalUrl)
+        public UrlModel Get(string urlCode)
         {
-            UrlModel model = _cache.Find(m => m.OriginalUrl == originalUrl);
+            UrlModel model = _cache.Find(m => m.ID == urlCode);
             if (!string.IsNullOrWhiteSpace(model?.ID))
             {
-                return model.ID;
+                return model;
             }
             else
             {
-                return string.Empty;
+                return new UrlModel();
             }
         }
     }

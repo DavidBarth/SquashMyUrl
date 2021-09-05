@@ -2,6 +2,7 @@
 using SquashMyUrl.DAL.DB;
 using SquashMyUrl.DAL.Interfaces;
 using SquashMyUrl.DAL.Utility;
+using SquashMyUrlApp.Models;
 
 namespace SquashMyUrl.DAL
 {
@@ -12,37 +13,26 @@ namespace SquashMyUrl.DAL
     /// </summary>
     public class SquashModelRepository : ISquashModelRepository
     {
-        private readonly ISquashModelCache _cache;
-        private readonly ISquashDB _fakeDB;
+        private static ISquashModelCache _cache = new SquashModelCache();
+        private static ISquashDB _fakeDB = new SquashDB();
 
-        //just newing a cache up here for now
-        //would use IOC container later to resolve
-        public SquashModelRepository(ISquashModelCache cache = null)
+        public SquashModelRepository()
         {
-            if (cache == null)
-            {
-                _cache = new SquashModelCache();
-                _fakeDB = new SquashDB();
-            }
-            else
-            {
-                _cache = cache;
-            }
         }
         
         public void AddShortenedUrl(string original, string shortUrlCode)
         {
-            SquashMyUrlApp.Models.UrlModel model = ModelBuilder.BuildModel(original, shortUrlCode);
+            UrlModel model = ModelBuilder.BuildModel(original, shortUrlCode);
             bool dbTransactionSuccessful = _fakeDB.TryAddShortenedUrl(model);
             if (dbTransactionSuccessful)
             {
-                _cache.AddShortenedUrl(model);
+                _cache.Add(model);
             }
         }
 
-        public string GetShortenedUrl(string input)
+        public UrlModel GetUrl(string input)
         {
-            return _cache.GetShortenedUrl(input);
+            return _cache.Get(input);
         }
     }
 }
