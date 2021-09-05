@@ -2,6 +2,7 @@
 {
     public interface IShortenUrlService
     {
-        string GetShortenedUrl(string url);
+        string AddShortenedUrl(string url);
+        string TryGetCachedUrl(string input);
     }
 }

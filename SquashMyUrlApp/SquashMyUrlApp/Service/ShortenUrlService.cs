@@ -20,36 +20,31 @@ namespace SquashMyUrlApp.ServiceClass
             _urlValidator = new UrlValidator();
             _squashModelRepository = new SquashModelRepository();
         }
-         
+
         /// <summary>
         /// returns shortened url from cache
         /// if it doesn't exist will persist
         /// </summary>
         /// <param name="input"></param>
-        /// <returns></returns>
-        public string GetShortenedUrl(string input)
+        /// <returns>url</returns>
+        public string AddShortenedUrl(string input)
         {
-             //validate url
             if (_urlValidator.ValidateUrl(input))
             {
-                //if valid check check cache first if it's in there return the stored value
-                string cachedUrl = _squashModelRepository.GetShortenedUrl(input);
-
-                if (string.IsNullOrWhiteSpace(cachedUrl))
-                {
-                    string shortUrlCode = _urlEncoder.EncodeUrl(input);
-                    _squashModelRepository.AddShortenedUrl(input, shortUrlCode);
-                    return shortUrlCode;
-                }
-                else
-                {
-                    return cachedUrl;
-                }
+                string shortUrlCode = _urlEncoder.EncodeUrl(input);
+                _squashModelRepository.AddShortenedUrl(input, shortUrlCode);
+                return shortUrlCode;
             }
+
             else
             {
                 return string.Empty;
             }
+        }
+
+        public string TryGetCachedUrl(string input)
+        {
+            return _squashModelRepository.GetUrl(input).OriginalUrl;
         }
     }
 }
