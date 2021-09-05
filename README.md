@@ -9,12 +9,13 @@
  # User should be able to target the api via a REST Call and get shortened URL
  # To test run webapp from VS and when up and running use following synthax in the browser https://<YOUR_LOCALHOST_AND_PORT>/api/squashmyurl?input=<INSERT_URL_HERE>
  # Example: https://localhost:44347/api/squashmyurl?input=https://news.bitcoin.com/soldex-ai-is-implementing-multi-module-components-to-hydraswap/
- # For the same URL it will return a unique key for a new URL a new key
+ # Copy the returned URL that has shortened URL code into the browser. This should redirect to the original page. 
+ # Insert new Url parameter and a new Url with short code should appear
  
  # TODO
  # Add DB functionality
  # System Test
- # Add Domain name before the squashed URL and return that.
+
  
 
  
